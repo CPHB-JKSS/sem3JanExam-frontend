@@ -51,13 +51,25 @@ function App() {
           }
         </Route>
         <Route path="/user">
-          <p>User stuff here</p>
+          {roles.includes("user")?
+            <p>User stuff here</p>
+          :
+            <p>You are not allowed to view this page</p>
+          }
         </Route>
         <Route path="/admin">
-          <p>Admin stuff here</p>
+          {roles.includes("admin")?
+            <p>Admin stuff here</p>
+          :
+            <p>You are not allowed to view this page</p>
+          }
         </Route>
         <Route path="/ext">
-          <p>External API stuff here</p>
+          {roles.includes("user") || roles.includes("admin")?
+            <p>External API stuff here</p>
+          :
+            <p>You are not allowed to view this page</p>
+          }
         </Route>
       </div>
     </Router>
