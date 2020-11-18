@@ -34,7 +34,7 @@ function apiFacade(){
       const options = makeOptions("GET", true);
       return fetch(URL + "/api/info/" + role, options)
       .then(handleHttpErrors)
-      .catch(err => console.log(err));
+      .catch(err => console.log("fetch request to info endpoint failed: " + err.status));
     }
 
     const setToken = (token) => {
@@ -55,7 +55,7 @@ function apiFacade(){
             setIsLoggedIn(true);
         })
         .catch(err => {
-            console.log(err);
+            console.log("fetch request to login endpoint failed: " + err.status);
             if(setLoginError){
               setLoginError("Failed to login");
             }

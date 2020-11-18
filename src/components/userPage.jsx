@@ -7,7 +7,6 @@ const UserPage = (props) => {
 
     useEffect(() => {
         const role = roles.includes("admin") ? "admin" : "user";
-        console.log(roles);
         facade.fetchUserData(role)
         .then(data => setServerData(data));
     },[])

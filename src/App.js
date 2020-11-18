@@ -1,7 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
   Link
 } from "react-router-dom";
@@ -50,6 +49,15 @@ function App() {
           :
             <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setRoles={setRoles}/>
           }
+        </Route>
+        <Route path="/user">
+          <p>User stuff here</p>
+        </Route>
+        <Route path="/admin">
+          <p>Admin stuff here</p>
+        </Route>
+        <Route path="/ext">
+          <p>External API stuff here</p>
         </Route>
       </div>
     </Router>
