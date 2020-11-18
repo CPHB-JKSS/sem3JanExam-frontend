@@ -29,6 +29,13 @@ function apiFacade(){
         }
         return opts;
       }
+    
+    const fetchUserData = (role) => {
+      const options = makeOptions("GET", true);
+      return fetch(URL + "/api/info/" + role, options)
+      .then(handleHttpErrors)
+      .catch(err => console.log(err));
+    }
 
     const setToken = (token) => {
         localStorage.setItem("jwtToken", token)
@@ -39,29 +46,25 @@ function apiFacade(){
     }
 
     const doLogin = (user, pass, setIsLoggedIn, setRoles, setLoginError) => {
-        const handleHttpErrorsForLogin = (res) => {
-            if (!res.ok) {
-                return Promise.reject({ status: res.status, fullError: res.json() })
-            }
-            setIsLoggedIn(true);
-            return res.json();
-        }
-
-        const options = makeOptions("POST",true,{username: user, password: pass});
+        const options = makeOptions("POST",false,{username: user, password: pass});
         fetch(URL + "/api/login", options)
-        .then(handleHttpErrorsForLogin)
+        .then(handleHttpErrors)
         .then(res => {
             setToken(res.token);
-            setRoles(res.roles);
+            setRoles(res.roles.split(","));
+            setIsLoggedIn(true);
         })
         .catch(err => {
             console.log(err);
-            setLoginError("Failed to login");
+            if(setLoginError){
+              setLoginError("Failed to login");
+            }
         });
     }
 
-    const logOut = (setIsLoggedIn) => {
+    const logOut = (setIsLoggedIn, setRoles) => {
       localStorage.removeItem("jwtToken");
+      setRoles([]);
       setIsLoggedIn(false);
     }
 
@@ -69,7 +72,8 @@ function apiFacade(){
         doLogin,
         setToken,
         getToken,
-        logOut
+        logOut,
+        fetchUserData
     }
         
     

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import facade from './components/apiFacade';
 import Login from './components/login';
+import UserPage from './components/userPage';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -25,12 +26,17 @@ function App() {
             </li>
             :""
           }
-          
           {roles.includes("admin")? 
             <li>
               <Link to="/admin">Admin page</Link>
             </li>
           :""
+          }
+          {roles.includes("user") || roles.includes("admin")?
+            <li>
+              <Link to="/ext">External API demo</Link>
+            </li>
+            :""
           }
 
         </ul>
@@ -38,11 +44,11 @@ function App() {
         <Route exact path="/">
           {isLoggedIn?
             <div>
-              <p>logged in stuff</p>
-              <button onClick={() => facade.logOut(setIsLoggedIn)}>Log out</button>
+              <UserPage roles={roles}/>
+              <button onClick={() => facade.logOut(setIsLoggedIn, setRoles)}>Log out</button>
             </div>
           :
-            <Login setIsLoggedIn={setIsLoggedIn} setRoles={setRoles}/>
+            <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setRoles={setRoles}/>
           }
         </Route>
       </div>
