@@ -8,8 +8,8 @@ const UserPage = (props) => {
     useEffect(() => {
         const role = roles.includes("admin") ? "admin" : "user";
         facade.fetchUserData(role)
-        .then(data => setServerData(data));
-    },[])
+            .then(data => setServerData(data));
+    }, [])
 
     return (
         <div>

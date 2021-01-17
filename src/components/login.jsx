@@ -9,7 +9,7 @@ const Login = (props) => {
     const [loginError, setLoginError] = useState("");
 
     const doChange = (event) => {
-        setLoginCredentials({ ...loginCredentials,[event.target.id]: event.target.value })
+        setLoginCredentials({ ...loginCredentials, [event.target.id]: event.target.value })
     }
 
     const doLogin = (event) => {
@@ -20,13 +20,25 @@ const Login = (props) => {
     return (
         <div>
             <p>{loginError}</p>
-            <form onChange={doChange}>
-                <input placeholder="Username" id="username"/>
-                <br />
-                <input type="password" placeholder="password" id="password"/>
-                <br/>
-                <button onClick={doLogin}>Login</button>
+
+            <form onChange={doChange} style={{ maxWidth: "300px" }}>
+                <div className="form-row">
+                    <div className="col">
+                        <input type="text" className="form-control" placeholder="Username" id="username" />
+                    </div>
+                </div>
+                <div className="form-row mt-2">
+                    <div className="col">
+                        <input type="password" className="form-control" placeholder="password" id="password" />
+                    </div>
+                </div>
+                <div className="form-row mt-2">
+                    <div className="col">
+                        <button className="btn btn-success w-100" onClick={doLogin}>Login</button>
+                    </div>
+                </div>
             </form>
+
         </div>
     );
 }
