@@ -9,6 +9,7 @@ import facade from './components/apiFacade';
 import Login from './components/login';
 import UserPage from './components/userPage';
 import AddSportForm from './components/addSportForm';
+import AddTeamForm from './components/addTeamForm';
 import SportsList from './components/sportsList';
 
 function App() {
@@ -108,23 +109,7 @@ function App() {
                 <div className="row mb-4">
                   <div className="col border rounded p-3 mr-3">
                     <p>Add new team</p>
-                    <form>
-                      <div className="form-row">
-                        <div className="col">
-                          <input type="text" className="form-control" placeholder="Name of the sport" id="sportname" />
-                        </div>
-                      </div>
-                      <div className="form-row mt-2">
-                        <div className="col">
-                          <input type="text" className="form-control" placeholder="Description" id="sportdesc" />
-                        </div>
-                      </div>
-                      <div className="form-row mt-2">
-                        <div className="col">
-                          <button className="btn btn-secondary w-100">Add new sport</button>
-                        </div>
-                      </div>
-                    </form>
+                    <AddTeamForm />
                   </div>
                   <div className="col border rounded p-3">
                     <p>Remove team</p>

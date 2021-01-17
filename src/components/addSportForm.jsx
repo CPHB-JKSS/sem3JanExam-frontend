@@ -25,7 +25,7 @@ const AddSportForm = (props) => {
                     <input
                         type="text"
                         className="form-control"
-                        placeholder="Name of the sport"
+                        placeholder="name of the sport"
                         id="sportName"
                     />
                 </div>
@@ -35,7 +35,7 @@ const AddSportForm = (props) => {
                     <input
                         type="text"
                         className="form-control"
-                        placeholder="Description"
+                        placeholder="description"
                         id="sportDesc"
                     />
                 </div>
