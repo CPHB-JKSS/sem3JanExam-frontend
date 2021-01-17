@@ -12,7 +12,7 @@ const EditTeamForm = (props) => {
     const doSubmit = (e) => {
         e.preventDefault()
         console.log(formData)
-        const options = facade.makeOptions("POST", true, formData);
+        const options = facade.makeOptions("PUT", true, formData);
         fetch(settings.URL + "/api/admin/team/edit", options)
             .catch(err => {
                 console.log("Fetch request failed: " + err.status);
@@ -51,7 +51,7 @@ const EditTeamForm = (props) => {
         <form onChange={doChange}>
             <div className="form-row mt-2">
                 <div className="col">
-                    <select className="custom-select" id="team">
+                    <select className="custom-select" id="teamName">
                         {selectTeamDataReady ? selectTeamData.map(team => (
                             <option>{team.name}</option>
                         )) :
