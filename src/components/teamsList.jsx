@@ -17,19 +17,27 @@ const TeamsList = (props) => {
                 console.log("Fetch request failed: " + err.status);
             })
     }, [])
-
+    console.log(tableData);
     return (
         <table className="table table-bordered" style={{ border: "solid white" }}>
             <thead>
                 <tr>
-                    <th>name</th>
+                    <th>Name</th>
+                    <th>Sport</th>
+                    <th>Minimum age</th>
+                    <th>Maximum age</th>
+                    <th>Price /year</th>
                 </tr>
             </thead>
             <tbody>
                 {tableReady ?
                     tableData.map(team => (
                         <tr>
-                            <td>{team}</td>
+                            <td>{team.name}</td>
+                            <td>{team.sport.sportName}</td>
+                            <td>{team.minAge}</td>
+                            <td>{team.maxAge}</td>
+                            <td>{team.pricePerYear / 100},-</td>
                         </tr>
                     ))
                     :
