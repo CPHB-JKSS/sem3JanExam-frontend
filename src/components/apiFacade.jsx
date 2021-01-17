@@ -10,7 +10,6 @@ const handleHttpErrors = (res) => {
   return res.json();
 }
 
-
 function apiFacade() {
 
   const makeOptions = (method, addToken, body) => {
@@ -67,8 +66,6 @@ function apiFacade() {
     setRoles([]);
     setIsLoggedIn(false);
   }
-
-
 
   return {
     doLogin,

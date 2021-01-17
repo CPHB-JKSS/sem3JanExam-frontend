@@ -10,6 +10,8 @@ import Login from './components/login';
 import UserPage from './components/userPage';
 import AddSportForm from './components/addSportForm';
 import AddTeamForm from './components/addTeamForm';
+import RemoveTeamForm from './components/removeTeamForm';
+import EditTeamForm from './components/editTeamForm';
 import SportsList from './components/sportsList';
 import TeamsList from './components/teamsList';
 
@@ -84,19 +86,6 @@ function App() {
             {roles.includes("user") ?
               <div className="row mb-4">
                 <div className="col border rounded p-3">
-                  <p>Sports list</p>
-                  <table className="table table-bordered">
-                    <thead>
-                      <th>id</th>
-                      <th>name</th>
-                      <th>description</th>
-                    </thead>
-                    <tbody>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tbody>
-                  </table>
                 </div>
               </div>
               :
@@ -106,42 +95,27 @@ function App() {
 
           <Route path="/admin">
             {roles.includes("admin") ?
-
               <div>
-
-
                 <div className="row mb-4">
                   <div className="col border rounded p-3">
                     <p>Add new sport</p>
                     <AddSportForm />
                   </div>
                 </div>
-
-
                 <div className="row mb-4">
                   <div className="col border rounded p-3 mr-3">
                     <p>Add new team</p>
                     <AddTeamForm />
                   </div>
                   <div className="col border rounded p-3">
+                    <p>Edit existing team</p>
+                    <EditTeamForm />
+                  </div>
+                </div>
+                <div className="row mb-4">
+                  <div className="col border rounded p-3">
                     <p>Remove team</p>
-                    <form>
-                      <div className="form-row">
-                        <div className="col">
-                          <input type="text" className="form-control" placeholder="Name of the sport" id="sportname" />
-                        </div>
-                      </div>
-                      <div className="form-row mt-2">
-                        <div className="col">
-                          <input type="text" className="form-control" placeholder="Description" id="sportdesc" />
-                        </div>
-                      </div>
-                      <div className="form-row mt-2">
-                        <div className="col">
-                          <button className="btn btn-secondary w-100">Add new sport</button>
-                        </div>
-                      </div>
-                    </form>
+                    <RemoveTeamForm />
                   </div>
                 </div>
               </div>
