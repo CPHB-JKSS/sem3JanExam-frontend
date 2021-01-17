@@ -9,6 +9,7 @@ import facade from './components/apiFacade';
 import Login from './components/login';
 import UserPage from './components/userPage';
 import AddSportForm from './components/addSportForm';
+import SportsList from './components/sportsList';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -45,129 +46,120 @@ function App() {
           }
 
         </ul>
+        <div className="row justify-content-center">
 
-        <Route exact path="/">
-          {isLoggedIn ?
-            <div>
-              <UserPage roles={roles} />
-              <button onClick={() => facade.logOut(setIsLoggedIn, setRoles)}>Log out</button>
-            </div>
-            :
-            <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setRoles={setRoles} />
-          }
-        </Route>
-        <Route path="/sports">
-          <div className="row mb-4">
-            <div className="col border rounded p-3">
-              <h3 className="mb-3">Sports list</h3>
-              <table className="table table-bordered">
-                <thead>
-                  <th>id</th>
-                  <th>name</th>
-                  <th>description</th>
-                </thead>
-                <tbody>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </Route>
-
-        <Route path="/user">
-          {roles.includes("user") ?
+          <Route exact path="/">
+            {isLoggedIn ?
+              <div>
+                <UserPage roles={roles} />
+                <button onClick={() => facade.logOut(setIsLoggedIn, setRoles)}>Log out</button>
+              </div>
+              :
+              <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setRoles={setRoles} />
+            }
+          </Route>
+          <Route path="/sports">
             <div className="row mb-4">
               <div className="col border rounded p-3">
-                <p>Sports list</p>
-                <table className="table table-bordered">
-                  <thead>
-                    <th>id</th>
-                    <th>name</th>
-                    <th>description</th>
-                  </thead>
-                  <tbody>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tbody>
-                </table>
+                <h3 className="mb-3">Sports list</h3>
+                <SportsList></SportsList>
               </div>
             </div>
-            :
-            <p>You are not allowed to view this page</p>
-          }
-        </Route>
+          </Route>
 
-        <Route path="/admin">
-          {roles.includes("admin") ?
-
-            <div>
-
-
+          <Route path="/user">
+            {roles.includes("user") ?
               <div className="row mb-4">
                 <div className="col border rounded p-3">
-                  <p>Add new sport</p>
-                  <AddSportForm />
+                  <p>Sports list</p>
+                  <table className="table table-bordered">
+                    <thead>
+                      <th>id</th>
+                      <th>name</th>
+                      <th>description</th>
+                    </thead>
+                    <tbody>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tbody>
+                  </table>
                 </div>
               </div>
+              :
+              <p>You are not allowed to view this page</p>
+            }
+          </Route>
+
+          <Route path="/admin">
+            {roles.includes("admin") ?
+
+              <div>
 
 
-              <div className="row mb-4">
-                <div className="col border rounded p-3 mr-3">
-                  <p>Add new team</p>
-                  <form>
-                    <div className="form-row">
-                      <div className="col">
-                        <input type="text" className="form-control" placeholder="Name of the sport" id="sportname" />
-                      </div>
-                    </div>
-                    <div className="form-row mt-2">
-                      <div className="col">
-                        <input type="text" className="form-control" placeholder="Description" id="sportdesc" />
-                      </div>
-                    </div>
-                    <div className="form-row mt-2">
-                      <div className="col">
-                        <button className="btn btn-secondary w-100">Add new sport</button>
-                      </div>
-                    </div>
-                  </form>
+                <div className="row mb-4">
+                  <div className="col border rounded p-3">
+                    <p>Add new sport</p>
+                    <AddSportForm />
+                  </div>
                 </div>
-                <div className="col border rounded p-3">
-                  <p>Remove team</p>
-                  <form>
-                    <div className="form-row">
-                      <div className="col">
-                        <input type="text" className="form-control" placeholder="Name of the sport" id="sportname" />
+
+
+                <div className="row mb-4">
+                  <div className="col border rounded p-3 mr-3">
+                    <p>Add new team</p>
+                    <form>
+                      <div className="form-row">
+                        <div className="col">
+                          <input type="text" className="form-control" placeholder="Name of the sport" id="sportname" />
+                        </div>
                       </div>
-                    </div>
-                    <div className="form-row mt-2">
-                      <div className="col">
-                        <input type="text" className="form-control" placeholder="Description" id="sportdesc" />
+                      <div className="form-row mt-2">
+                        <div className="col">
+                          <input type="text" className="form-control" placeholder="Description" id="sportdesc" />
+                        </div>
                       </div>
-                    </div>
-                    <div className="form-row mt-2">
-                      <div className="col">
-                        <button className="btn btn-secondary w-100">Add new sport</button>
+                      <div className="form-row mt-2">
+                        <div className="col">
+                          <button className="btn btn-secondary w-100">Add new sport</button>
+                        </div>
                       </div>
-                    </div>
-                  </form>
+                    </form>
+                  </div>
+                  <div className="col border rounded p-3">
+                    <p>Remove team</p>
+                    <form>
+                      <div className="form-row">
+                        <div className="col">
+                          <input type="text" className="form-control" placeholder="Name of the sport" id="sportname" />
+                        </div>
+                      </div>
+                      <div className="form-row mt-2">
+                        <div className="col">
+                          <input type="text" className="form-control" placeholder="Description" id="sportdesc" />
+                        </div>
+                      </div>
+                      <div className="form-row mt-2">
+                        <div className="col">
+                          <button className="btn btn-secondary w-100">Add new sport</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
-            </div>
-            :
-            <p>You are not allowed to view this page</p>
-          }
-        </Route>
-        <Route path="/ext">
-          {roles.includes("user") || roles.includes("admin") ?
-            <p>External API stuff here</p>
-            :
-            <p>You are not allowed to view this page</p>
-          }
-        </Route>
+              :
+              <p>You are not allowed to view this page</p>
+            }
+          </Route>
+          <Route path="/ext">
+            {roles.includes("user") || roles.includes("admin") ?
+              <p>External API stuff here</p>
+              :
+              <p>You are not allowed to view this page</p>
+            }
+          </Route>
+        </div>
       </div>
     </Router >
   )
