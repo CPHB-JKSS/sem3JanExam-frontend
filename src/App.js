@@ -11,6 +11,7 @@ import UserPage from './components/userPage';
 import AddSportForm from './components/addSportForm';
 import AddTeamForm from './components/addTeamForm';
 import SportsList from './components/sportsList';
+import TeamsList from './components/teamsList';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -27,6 +28,9 @@ function App() {
           <li className="nav-item">
             <Link className="nav-link" to="/sports">Sports</Link>
           </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/teams">Teams</Link>
+          </li>
           {roles.includes("user") ?
             <li classname="nav-item">
               <Link className="nav-link" to="/user">User page</Link>
@@ -41,7 +45,7 @@ function App() {
           }
           {roles.includes("user") || roles.includes("admin") ?
             <li className="nav-item">
-              <Link className="nav-link" to="/ext">External API demo</Link>
+              <Link className="nav-link" to="/both">Admin/User page</Link>
             </li>
             : ""
           }
@@ -64,6 +68,14 @@ function App() {
               <div className="col border rounded p-3">
                 <h3 className="mb-3">Sports list</h3>
                 <SportsList></SportsList>
+              </div>
+            </div>
+          </Route>
+          <Route path="/teams">
+            <div className="row mb-4">
+              <div className="col border rounded p-3">
+                <h3 className="mb-3">Teams list</h3>
+                <TeamsList></TeamsList>
               </div>
             </div>
           </Route>
@@ -137,9 +149,9 @@ function App() {
               <p>You are not allowed to view this page</p>
             }
           </Route>
-          <Route path="/ext">
+          <Route path="/both">
             {roles.includes("user") || roles.includes("admin") ?
-              <p>External API stuff here</p>
+              <p>Page shared by users and admins</p>
               :
               <p>You are not allowed to view this page</p>
             }
