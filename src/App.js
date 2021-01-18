@@ -24,8 +24,7 @@ function App() {
   return (
     <Router>
       <div className="container">
-        <ul className="nav border-bottom mb-4
-        ">
+        <ul className="nav border-bottom mb-4 justify-content-center">
           <li className="nav-item">
             <Link className="nav-link" to="/">Home</Link>
           </li>
@@ -59,9 +58,11 @@ function App() {
 
           <Route exact path="/">
             {isLoggedIn ?
-              <div>
-                <UserPage roles={roles} />
-                <button onClick={() => facade.logOut(setIsLoggedIn, setRoles)}>Log out</button>
+              <div className="row mb-4">
+                <div className="col border rounded p-3">
+                  <UserPage roles={roles} />
+                  <button className="btn btn-secondary w-100" onClick={() => facade.logOut(setIsLoggedIn, setRoles)}>Log out</button>
+                </div>
               </div>
               :
               <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setRoles={setRoles} />
@@ -88,6 +89,8 @@ function App() {
             {roles.includes("user") ?
               <div className="row mb-4">
                 <div className="col border rounded p-3">
+                  <p>Page shared by users</p>
+
                 </div>
               </div>
               :
