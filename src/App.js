@@ -11,7 +11,9 @@ import UserPage from './components/userPage';
 import AddSportForm from './components/addSportForm';
 import AddTeamForm from './components/addTeamForm';
 import RemoveTeamForm from './components/removeTeamForm';
+import RemoveSportForm from './components/removeSportForm';
 import EditTeamForm from './components/editTeamForm';
+import EditSportForm from './components/editSportForm';
 import SportsList from './components/sportsList';
 import TeamsList from './components/teamsList';
 
@@ -96,28 +98,47 @@ function App() {
           <Route path="/admin">
             {roles.includes("admin") ?
               <div>
-                <div className="row mb-4">
-                  <div className="col border rounded p-3">
-                    <p>Add new sport</p>
-                    <AddSportForm />
+                <div>
+                  <h1 className="text-center">Sports</h1>
+                  <div className="row mb-3">
+                    <div className="col border rounded p-3 mr-3">
+                      <p>Add new sport</p>
+                      <AddSportForm />
+                    </div>
+                    <div className="col border rounded p-3">
+                      <p>Edit existing sport</p>
+                      <EditSportForm />
+                    </div>
+                  </div>
+                  <div className="row mb-5">
+                    <div className="col border rounded p-3">
+                      <p>Remove sport</p>
+                      <RemoveSportForm />
+                    </div>
                   </div>
                 </div>
-                <div className="row mb-4">
-                  <div className="col border rounded p-3 mr-3">
-                    <p>Add new team</p>
-                    <AddTeamForm />
+
+                <div>
+                  <h1 className="text-center">Teams</h1>
+                  <div className="row mb-3">
+                    <div className="col border rounded p-3 mr-3">
+                      <p>Add new team</p>
+                      <AddTeamForm />
+                    </div>
+                    <div className="col border rounded p-3">
+                      <p>Edit existing team</p>
+                      <EditTeamForm />
+                    </div>
                   </div>
-                  <div className="col border rounded p-3">
-                    <p>Edit existing team</p>
-                    <EditTeamForm />
+                  <div className="row mb-5">
+                    <div className="col border rounded p-3">
+                      <p>Remove team</p>
+                      <RemoveTeamForm />
+                    </div>
                   </div>
                 </div>
-                <div className="row mb-4">
-                  <div className="col border rounded p-3">
-                    <p>Remove team</p>
-                    <RemoveTeamForm />
-                  </div>
-                </div>
+
+
               </div>
               :
               <p>You are not allowed to view this page</p>
